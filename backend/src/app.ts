@@ -2,8 +2,8 @@ import express from 'express';
 
 const app: express.Application = express();
 
-app.get('/', (req, res) => res.send('Hello world'));
+app.get('/api/weather', (req, res) => res.json({ message: 'success' }));
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Server running');
 });

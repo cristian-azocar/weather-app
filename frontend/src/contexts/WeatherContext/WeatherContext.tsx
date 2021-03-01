@@ -13,8 +13,12 @@ export function WeatherContextProvider(
   const { children } = props;
   const [state] = useState<WeatherContextType>({ fetchWeather });
 
-  function fetchWeather(latitude: number, longitude: number): void {
-    console.log(latitude, longitude);
+  async function fetchWeather(
+    latitude: number,
+    longitude: number
+  ): Promise<void> {
+    const response = await fetch('/api/weather');
+    const data = await response.json();
   }
 
   return (
