@@ -28,7 +28,7 @@
     "class-methods-use-this": "off",
     "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }],
     "lines-between-class-members": [
       "error",
       "always",
