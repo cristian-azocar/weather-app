@@ -1,8 +1,7 @@
 import app from './app';
+import config from './config';
 
-const port: number = +process.env.PORT || 3001;
-
-app.listen(port, (): void => {
+app.listen(config.port, (): void => {
   // eslint-disable-next-line no-console
-  console.log(`Server running in port ${port}`);
+  console.log(`Server running on port ${config.port}`);
 });

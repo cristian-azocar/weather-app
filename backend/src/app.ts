@@ -3,12 +3,15 @@ import 'express-async-errors';
 import bodyParser from 'body-parser';
 import routes from './routes';
 import ErrorHandlerMiddleware from './middlewares/ErrorHandlerMiddleware';
+import redisStorage from './storage/RedisStorage';
 
 const app: express.Application = express();
-const errorHandlerMiddleware: ErrorHandlerMiddleware = new ErrorHandlerMiddleware();
+const errorHandler: ErrorHandlerMiddleware = new ErrorHandlerMiddleware();
+
+redisStorage.connect();
 
 app.use(bodyParser.json());
 app.use('/api', routes);
-app.use(errorHandlerMiddleware.handleErrors);
+app.use(errorHandler.handleErrors);
 
 export default app;
