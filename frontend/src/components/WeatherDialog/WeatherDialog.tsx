@@ -11,7 +11,7 @@ import { Button } from '@material-ui/core';
 import { Weather } from '../../models/Weather';
 import useStyles from './styles';
 
-export type WeatherModalProps = {
+export type WeatherDialogProps = {
   open: boolean;
   loading?: boolean;
   weather?: Weather;
@@ -20,13 +20,13 @@ export type WeatherModalProps = {
   onRetry?: () => void;
 };
 
-const defaultProps: Partial<WeatherModalProps> = {
+const defaultProps: Partial<WeatherDialogProps> = {
   loading: false,
   weather: undefined,
   error: undefined,
 };
 
-function WeatherDialog(props: WeatherModalProps): JSX.Element {
+function WeatherDialog(props: WeatherDialogProps): JSX.Element {
   const { open, loading, weather, error, onClose, onRetry } = props;
   const classes = useStyles();
 

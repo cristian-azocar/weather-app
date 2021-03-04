@@ -1,11 +1,11 @@
 import { useRef } from 'react';
+import Map, { Coordinates } from './components/Map';
+import WeatherDialog, { WeatherDialogProps } from './components/WeatherDialog';
 import { useWeather } from './contexts/WeatherContext';
 import useMergeState from './hooks/useMergeState';
 import { Weather } from './models/Weather';
-import Map, { Coordinates } from './components/Map';
-import WeatherDialog, { WeatherModalProps } from './components/WeatherDialog';
 
-const initialDialogState: WeatherModalProps = {
+const initialDialogState: WeatherDialogProps = {
   open: false,
   loading: false,
   weather: undefined,
