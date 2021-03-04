@@ -1,6 +1,6 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import axios from 'axios';
 import { Weather } from '../../models/Weather';
+import weatherService from '../../services/WeatherService';
 
 type WeatherContextType = {
   fetchWeather: (latitude: number, longitude: number) => Promise<Weather>;
@@ -18,10 +18,12 @@ export function WeatherContextProvider(
     latitude: number,
     longitude: number
   ): Promise<Weather> {
-    const url = `/api/weather?latitude=${latitude}&longitude=${longitude}`;
-    const { data } = await axios.get<Weather>(url);
+    const weather: Weather = await weatherService.fetchWeather(
+      latitude,
+      longitude
+    );
 
-    return data;
+    return weather;
   }
 
   return (
