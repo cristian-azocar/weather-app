@@ -1,0 +1,14 @@
+FROM node:14.16.0-alpine AS base
+WORKDIR /usr/src/app
+COPY package*.json ./
+
+FROM base AS build
+RUN npm install --silent
+COPY . .
+RUN npm run build
+
+FROM base AS production
+ENV NODE_ENV=production
+RUN npm ci --silent
+COPY --from=build /usr/src/app/dist ./
+CMD ["node", "server.js"]
