@@ -1,9 +1,17 @@
 import express from 'express';
+import 'express-async-errors';
+import bodyParser from 'body-parser';
+import routes from './routes';
+import ErrorHandlerMiddleware from './middlewares/ErrorHandlerMiddleware';
+import redisStorage from './storage/RedisStorage';
 
 const app: express.Application = express();
+const errorHandler: ErrorHandlerMiddleware = new ErrorHandlerMiddleware();
 
-app.get('/', (req, res) => res.send('Hello world'));
+redisStorage.connect();
 
-app.listen(3000, () => {
-  console.log('Server running');
-});
+app.use(bodyParser.json());
+app.use('/api', routes);
+app.use(errorHandler.handleErrors);
+
+export default app;

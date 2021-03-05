@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+
+  backend:
+    depends_on:
+      - redis
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    ports:
+      - 81:81
+    environment:
+      PORT: 81
+      REDIS_HOST: redis
+
+  frontend:
+    depends_on:
+      - backend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+
