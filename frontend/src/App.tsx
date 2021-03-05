@@ -1,11 +1,18 @@
 import { useRef } from 'react';
 import Map, { Coordinates } from './components/Map';
-import WeatherDialog, { WeatherDialogProps } from './components/WeatherDialog';
+import WeatherDialog from './components/WeatherDialog';
 import { useWeather } from './contexts/WeatherContext';
 import useMergeState from './hooks/useMergeState';
-import { Weather } from './models/Weather';
+import { IWeather } from './types/interfaces';
 
-const initialDialogState: WeatherDialogProps = {
+type WeatherDialogState = {
+  open: boolean;
+  loading?: boolean;
+  weather?: IWeather;
+  error?: Error;
+};
+
+const initialDialogState: WeatherDialogState = {
   open: false,
   loading: false,
   weather: undefined,
@@ -41,7 +48,7 @@ export default function App(): JSX.Element {
 
     try {
       const { latitude, longitude } = coordinates;
-      const weather: Weather = await fetchWeather(latitude, longitude);
+      const weather: IWeather = await fetchWeather(latitude, longitude);
       setWeatherDialog({ loading: false, weather });
     } catch (error) {
       setWeatherDialog({ loading: false, error });

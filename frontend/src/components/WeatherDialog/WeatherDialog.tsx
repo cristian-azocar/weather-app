@@ -8,13 +8,13 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import ErrorOutline from '@material-ui/icons/ErrorOutline';
 import { Button } from '@material-ui/core';
-import { Weather } from '../../models/Weather';
+import { IWeather } from '../../types/interfaces';
 import useStyles from './styles';
 
-export type WeatherDialogProps = {
+type WeatherDialogProps = {
   open: boolean;
   loading?: boolean;
-  weather?: Weather;
+  weather?: IWeather;
   error?: Error;
   onClose?: () => void;
   onRetry?: () => void;
@@ -24,6 +24,8 @@ const defaultProps: Partial<WeatherDialogProps> = {
   loading: false,
   weather: undefined,
   error: undefined,
+  onClose: undefined,
+  onRetry: undefined,
 };
 
 function WeatherDialog(props: WeatherDialogProps): JSX.Element {

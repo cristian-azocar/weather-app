@@ -1,9 +1,9 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import { Weather } from '../../models/Weather';
+import { IWeather } from '../../types/interfaces';
 import weatherService from '../../services/WeatherService';
 
 type WeatherContextType = {
-  fetchWeather: (latitude: number, longitude: number) => Promise<Weather>;
+  fetchWeather: (latitude: number, longitude: number) => Promise<IWeather>;
 };
 
 const WeatherContext = createContext({} as WeatherContextType);
@@ -17,8 +17,8 @@ export function WeatherContextProvider(
   async function fetchWeather(
     latitude: number,
     longitude: number
-  ): Promise<Weather> {
-    const weather: Weather = await weatherService.fetchWeather(
+  ): Promise<IWeather> {
+    const weather: IWeather = await weatherService.fetchWeather(
       latitude,
       longitude
     );
