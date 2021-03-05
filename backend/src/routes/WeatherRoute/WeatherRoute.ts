@@ -3,13 +3,13 @@ import WeatherController from '../../controllers/WeatherController';
 import ValidatorMiddleware, {
   RequestProperty,
 } from '../../middlewares/ValidatorMiddleware';
-import CacheMiddleware from '../../middlewares/CacheMiddleware';
+import WeatherCacheMiddleware from '../../middlewares/WeatherCacheMiddleware';
 import weatherSchema from '../../schemas/weather';
 
 const router: Router = express.Router();
 const weatherController: WeatherController = new WeatherController();
 const validatorMiddleware: ValidatorMiddleware = new ValidatorMiddleware();
-const cacheMiddleware: CacheMiddleware = new CacheMiddleware();
+const cacheMiddleware: WeatherCacheMiddleware = new WeatherCacheMiddleware();
 
 router.get(
   '/weather',
