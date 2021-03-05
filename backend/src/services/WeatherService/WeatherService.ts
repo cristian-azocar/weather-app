@@ -1,13 +1,22 @@
 import axios from 'axios';
+import { IWeather } from 'src/types/interfaces';
+import config from '../../config';
+import { camelizeKeys } from '../../utils/object-utils';
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/onecall';
 const exclude = 'minutely,hourly,daily,flags';
-const apiKey = '1a4560cc9acebeb0ad8b72fe64d6cac8';
+const { url, key: apiKey } = config.weatherApi;
 
 export default class WeatherService {
-  async getWeather(latitude: number, longitude: number): Promise<unknown> {
-    const url = `${baseUrl}?lat=${latitude}&lon=${longitude}&exclude=${exclude}&units=metric&appid=${apiKey}`;
-    const { data } = await axios.get(url);
+  transformResponse(response: string): unknown {
+    const obj: Record<string, unknown> = JSON.parse(response);
+    return camelizeKeys(obj);
+  }
+
+  async getWeather(latitude: number, longitude: number): Promise<IWeather> {
+    const fullUrl = `${url}?lat=${latitude}&lon=${longitude}&exclude=${exclude}&units=metric&appid=${apiKey}`;
+    const { data } = await axios.get<IWeather>(fullUrl, {
+      transformResponse: this.transformResponse,
+    });
 
     return data;
   }
