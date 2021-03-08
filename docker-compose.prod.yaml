@@ -17,8 +17,8 @@ services:
     ports:
       - 81:81
     environment:
-      - PORT: 81
-      - REDIS_HOST: redis
+      PORT: 81
+      REDIS_HOST: redis
 
   frontend:
     depends_on:
