@@ -9,21 +9,19 @@ services:
   backend:
     depends_on:
       - redis
-    build:
-      context: ./backend
+    build: ./backend
     ports:
       - 3001:3001
     volumes:
       - ./backend/:/usr/src/app
     environment:
-      REDIS_HOST: redis
-      WEATHER_API_KEY: 1a4560cc9acebeb0ad8b72fe64d6cac8
+      - REDIS_HOST: redis
+      - WEATHER_API_KEY: 1a4560cc9acebeb0ad8b72fe64d6cac8
 
   frontend:
     depends_on:
       - backend
-    build:
-      context: ./frontend
+    build: ./frontend
     ports:
       - 3000:3000
     volumes:

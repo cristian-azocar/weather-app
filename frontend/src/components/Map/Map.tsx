@@ -1,6 +1,6 @@
 import { LeafletMouseEvent } from 'leaflet';
 import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
-import './Map.css';
+import useStyles from './styles';
 
 type MapProps = {
   center?: CoordinatesTuple;
@@ -35,9 +35,15 @@ function MapConsumer(props: MapProps): null {
 
 function Map(props: MapProps): JSX.Element {
   const { center, onClick } = props;
+  const classes = useStyles();
 
   return (
-    <MapContainer id="map" center={center} zoom={4}>
+    <MapContainer
+      id="map"
+      center={center}
+      zoom={4}
+      className={classes.mapContainer}
+    >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
