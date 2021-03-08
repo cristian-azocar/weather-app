@@ -22,6 +22,8 @@ jobs:
         run: npm ci
       - name: Build the site
         run: npm run build
+        env:
+          REACT_APP_API_BASE_URL: https://cris-weather-api.herokuapp.com
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
