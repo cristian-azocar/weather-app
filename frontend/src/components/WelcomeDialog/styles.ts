@@ -14,13 +14,13 @@ export default makeStyles((theme) => ({
   dialogActions: {
     justifyContent: 'center',
   },
-  welcomeImage: {
-    width: '70%',
-  },
   gridContainer: {
     height: '100%',
     alignItems: 'center',
     flexDirection: 'column',
+    [theme.breakpoints.only('xs')]: {
+      flexDirection: 'row',
+    },
   },
   gridItem: {
     flexGrow: 1,
