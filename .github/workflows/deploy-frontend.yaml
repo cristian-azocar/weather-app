@@ -1,12 +1,15 @@
-name: Build and Deploy
+name: Deploy frontend
 
 on:
   push:
     branches: [master]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/deploy-frontend.yaml'
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy
+    name: Build and deploy
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,7 +26,7 @@ jobs:
       - name: Build the site
         run: npm run build
         env:
-          REACT_APP_API_BASE_URL: https://cris-weather-api.herokuapp.com
+          REACT_APP_API_BASE_URL: ${{ secrets.BACKEND_BASE_URL }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
