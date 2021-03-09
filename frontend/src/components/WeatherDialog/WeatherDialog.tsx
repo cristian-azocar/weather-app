@@ -68,11 +68,10 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
         <Grid item>
           <img
             alt="icon"
-            src={`http://openweathermap.org/img/wn/${weather?.current.weather[0].icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${weather?.current.weather[0].icon}@2x.png`}
           />
         </Grid>
         <Grid item>
-          <Typography variant="h6">{weather?.timezone}</Typography>
           <Typography variant="h5">
             {weather?.current.weather[0].description}
           </Typography>
