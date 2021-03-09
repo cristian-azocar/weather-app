@@ -1,9 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Map, { Coordinates } from './components/Map';
 import WeatherDialog from './components/WeatherDialog';
+import WelcomeDialog from './components/WelcomeDialog';
 import { useWeather } from './contexts/WeatherContext';
 import useMergeState from './hooks/useMergeState';
 import { IWeather } from './types/interfaces';
+import * as localStorageUtils from './utils/localStorage-utils';
 
 type WeatherDialogState = {
   open: boolean;
@@ -12,15 +14,22 @@ type WeatherDialogState = {
   error?: Error;
 };
 
-const initialDialogState: WeatherDialogState = {
+const initialWeatherDialogState: WeatherDialogState = {
   open: false,
   loading: false,
   weather: undefined,
   error: undefined,
 };
 
+const initialWelcomeDialogState = {
+  open: !localStorageUtils.getItem('welcomeDialogSeen'),
+};
+
 export default function App(): JSX.Element {
-  const [weatherDialog, setWeatherDialog] = useMergeState(initialDialogState);
+  const [weatherDialog, setWeatherDialog] = useMergeState(
+    initialWeatherDialogState
+  );
+  const [welcomeDialog, setWelcomeDialog] = useState(initialWelcomeDialogState);
   const lastCoordinatesRef = useRef<Coordinates>();
   const { fetchWeather } = useWeather();
 
@@ -37,8 +46,13 @@ export default function App(): JSX.Element {
     fetchAndDisplayWeather(lastCoordinatesRef.current);
   }
 
-  function closeDialog(): void {
+  function closeWeatherDialog(): void {
     setWeatherDialog({ open: false });
+  }
+
+  function closeWelcomeDialog(): void {
+    localStorageUtils.setItem('welcomeDialogSeen', true);
+    setWelcomeDialog({ open: false });
   }
 
   async function fetchAndDisplayWeather(
@@ -57,13 +71,14 @@ export default function App(): JSX.Element {
 
   return (
     <div id="app">
+      <WelcomeDialog open={welcomeDialog.open} onClose={closeWelcomeDialog} />
       <Map onClick={handleMapClick} />
       <WeatherDialog
         open={weatherDialog.open}
         loading={weatherDialog.loading}
         weather={weatherDialog.weather}
         error={weatherDialog.error}
-        onClose={closeDialog}
+        onClose={closeWeatherDialog}
         onRetry={retryWeatherFetch}
       />
     </div>
