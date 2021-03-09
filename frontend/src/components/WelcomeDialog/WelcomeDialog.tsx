@@ -1,3 +1,4 @@
+import Emoji from 'a11y-react-emoji';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
@@ -5,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import welcomeImage from '../../assets/images/welcome-image.png';
 import useStyles from './styles';
 
@@ -37,22 +39,32 @@ function WelcomeDialog(props: WelcomeDialogProps): JSX.Element {
           <Grid item className={classes.gridItem}>
             <Typography variant="h5" align="center">
               <Box fontWeight="bold" marginBottom="20px" marginTop="20px">
-                Welcome to Weather App!
+                Welcome to Weather App! <Emoji symbol="👋" label="wave-hand" />
               </Box>
             </Typography>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Typography align="center" className={classes.description}>
-              Hello there! This is a simple web application I made for fun. Just
-              select a place on the map and see the current temperature. If you
-              want to know more, visit the{' '}
-              <a
+            <Typography align="center">
+              Hello there! My name is{' '}
+              <Link
+                href="https://github.com/cristian-azocar"
+                target="_blank"
+                rel="noreferrer"
+                underline="always"
+              >
+                Cristian Azócar
+              </Link>{' '}
+              and I made this simple web application for fun. Just select a
+              place on the map and see the current temperature. If you want to
+              know more, visit the{' '}
+              <Link
                 href="https://github.com/cristian-azocar/weather-app"
                 target="_blank"
                 rel="noreferrer"
+                underline="always"
               >
                 repository.
-              </a>
+              </Link>
             </Typography>
           </Grid>
         </Grid>

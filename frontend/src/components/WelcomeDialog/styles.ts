@@ -25,7 +25,4 @@ export default makeStyles((theme) => ({
   gridItem: {
     flexGrow: 1,
   },
-  description: {
-    maxWidth: '464px',
-  },
 }));
