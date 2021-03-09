@@ -29,11 +29,7 @@ function WelcomeDialog(props: WelcomeDialogProps): JSX.Element {
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.gridItem}>
             <Box textAlign="center">
-              <img
-                src={welcomeImage}
-                alt="welcome"
-                className={classes.welcomeImage}
-              />
+              <img src={welcomeImage} alt="welcome" />
             </Box>
           </Grid>
           <Grid item className={classes.gridItem}>
