@@ -4,9 +4,15 @@
   <img src="frontend/public/logo192.png" width="120px" height="120px" />
 </p>
 
+<p align="center">
+  <img src="https://badgen.net/dependabot/cristian-azocar/weather-app?icon=dependabot" />
+</p>
+
 <hr />
 
 **Weather App** is a React + Node.js application I made to learn new technologies, and of course, for fun. I think that getting your hands dirty is the quickest way to learn new things.
+
+The website is basically an interactive map that shows the current weather of a selected place. Behind the scenes, it takes the coordinates (longitude and latitude) of the location and sends them to an external API to get the data.
 
 **View a live version of the website [here](https://cristian-azocar.github.io/weather-app)**.
 
