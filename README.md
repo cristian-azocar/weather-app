@@ -36,6 +36,7 @@ The website is basically an interactive map that shows the current weather of a 
 ### Prerequisites
 
 You need to have installed the following:
+
 - Git
 - Node.js
 - Docker (only needed if you want to run the containers)
@@ -66,16 +67,20 @@ docker-compose up
 Note: if you want to run the containers in the background, use the `-d` flag (e.g. `docker-compose up -d`).
 
 ## Continuous deployment with GitHub Actions
+
 The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend. To automate this process, the project is configured to use GitHub Actions.
 
 Every time the source code changes, an automatic deploy is made to GitHub Pages or Heroku (depending on where the changes were made). The files located in `.github/workflows` instructs GitHub to deploy the applications on every push to `master`, either by directly pushing to the branch or by merging a pull request.
 
 ## External resources
+
 This app uses two external resources to work properly:
+
 - [Leaflet](https://leafletjs.com): an open-source library to display interactive maps.
 - [OpenWeather](https://openweathermap.org/): provides APIs to get weather forecasts.
 
 ## TODO
+
 - Create unit tests.
 - Create a health endpoint.
 - Add `Husky`.
