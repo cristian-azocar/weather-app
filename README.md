@@ -70,7 +70,7 @@ Note: if you want to run the containers in the background, use the `-d` flag (e.
 
 The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend. To automate this process, the project is configured to use GitHub Actions.
 
-Every time the source code changes, an automatic deploy is made to GitHub Pages or Heroku (depending on where the changes were made). The files located in `.github/workflows` instructs GitHub to deploy the applications on every push to `master`, either by directly pushing to the branch or by merging a pull request.
+Every time the source code changes, an automatic deploy is made to GitHub Pages and/or Heroku (depending on where the changes were made). The files located in `.github/workflows` instructs GitHub to deploy the applications on every push to `master`, either by directly pushing to the branch or by merging a pull request.
 
 ## External resources
 
