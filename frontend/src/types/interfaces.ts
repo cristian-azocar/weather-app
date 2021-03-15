@@ -17,6 +17,7 @@ export interface IWeather {
     visibility: number;
     windSpeed: number;
     windDeg: number;
+    windGust: number;
     weather: Array<{
       id: number;
       main: string;
