@@ -15,10 +15,6 @@ type WelcomeDialogProps = {
   onClose?: () => void;
 };
 
-const defaultProps: Partial<WelcomeDialogProps> = {
-  onClose: undefined,
-};
-
 function WelcomeDialog(props: WelcomeDialogProps): JSX.Element {
   const { open, onClose } = props;
   const classes = useStyles();
@@ -74,6 +70,8 @@ function WelcomeDialog(props: WelcomeDialogProps): JSX.Element {
   );
 }
 
-WelcomeDialog.defaultProps = defaultProps;
+WelcomeDialog.defaultProps = {
+  onClose: undefined,
+};
 
 export default WelcomeDialog;

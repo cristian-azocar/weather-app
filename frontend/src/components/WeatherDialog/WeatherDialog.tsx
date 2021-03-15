@@ -20,21 +20,13 @@ type WeatherDialogProps = {
   onRetry?: () => void;
 };
 
-const defaultProps: Partial<WeatherDialogProps> = {
-  loading: false,
-  weather: undefined,
-  error: undefined,
-  onClose: undefined,
-  onRetry: undefined,
-};
-
 function WeatherDialog(props: WeatherDialogProps): JSX.Element {
   const { open, loading, weather, error, onClose, onRetry } = props;
   const classes = useStyles();
 
   function renderContent(): JSX.Element {
     if (loading) {
-      return <CircularProgress size={80} />;
+      return <CircularProgress size={80} role="progressbar" aria-busy="true" />;
     }
 
     if (error) {
@@ -44,7 +36,9 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
             <ErrorOutline color="error" className={classes.errorIcon} />
           </Grid>
           <Grid item>
-            <Typography variant="h5">Oops! Something went wrong</Typography>
+            <Typography variant="h5" role="alert">
+              Oops! Something went wrong
+            </Typography>
           </Grid>
           <Grid item>
             <Button variant="contained" color="primary" onClick={onRetry}>
@@ -90,7 +84,11 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
     >
       <DialogTitle disableTypography className={classes.dialogTitle}>
         <Typography variant="h6">Current Weather</Typography>
-        <IconButton className={classes.closeButton} onClick={onClose}>
+        <IconButton
+          className={classes.closeButton}
+          onClick={onClose}
+          aria-label="close"
+        >
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -101,6 +99,12 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
   );
 }
 
-WeatherDialog.defaultProps = defaultProps;
+WeatherDialog.defaultProps = {
+  loading: false,
+  weather: undefined,
+  error: undefined,
+  onClose: undefined,
+  onRetry: undefined,
+};
 
 export default WeatherDialog;
