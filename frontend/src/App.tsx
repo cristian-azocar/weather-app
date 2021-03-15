@@ -70,7 +70,7 @@ export default function App(): JSX.Element {
   }
 
   return (
-    <div id="app">
+    <div id="app" data-testid="app">
       <WelcomeDialog open={welcomeDialog.open} onClose={closeWelcomeDialog} />
       <Map onClick={handleMapClick} />
       <WeatherDialog
