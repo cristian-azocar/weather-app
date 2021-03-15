@@ -23,6 +23,7 @@ The website is basically an interactive map that shows the current weather of a 
 - Frontend built with [React](https://reactjs.org).
   - Bootstraped using [Create React App](https://github.com/facebook/create-react-app).
   - [Material-UI](https://material-ui.com/) and [CSS-in-JS](https://cssinjs.org/) to style the components.
+  - Global state management using [React Context](https://reactjs.org/docs/context.html).
 - Backend built with [Node.js](https://nodejs.org) and [Express](https://github.com/expressjs/express).
   - Hot-reload with [Nodemon](https://nodemon.io).
   - Cache layer using [Redis](https://redis.io/).
