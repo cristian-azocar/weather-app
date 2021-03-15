@@ -10,3 +10,7 @@ test('renders a children', (): void => {
   const textElement: HTMLElement = screen.getByText(/Hello World/i);
   expect(textElement).toBeInTheDocument();
 });
+
+test('dummy test', (): void => {
+  expect(1 + 1).toEqual(2);
+});
