@@ -2,8 +2,8 @@ name: Build and test frontend
 
 on:
   push:
-    paths-ignore:
-      - '*.md'
+    paths:
+      - 'frontend/**'
 
 jobs:
   build-and-test:
