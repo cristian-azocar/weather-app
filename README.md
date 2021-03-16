@@ -6,6 +6,7 @@
 
 <p align="center">
   <img src="https://badgen.net/dependabot/cristian-azocar/weather-app?icon=dependabot" />
+  <img src="https://github.com/cristian-azocar/weather-app/actions/workflows/test-frontend.yaml/badge.svg">
 </p>
 
 <hr />
