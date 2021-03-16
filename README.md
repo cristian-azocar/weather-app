@@ -30,7 +30,7 @@ The website is basically an interactive map that shows the current weather of a 
   - Request validations using [joi](https://joi.dev).
 - Good and clean code practices using [ESLint](https://eslint.org/) (based on [Airbnb configuration](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)), [Prettier](https://prettier.io/) and [EditorConfig](https://editorconfig.org/).
 - Both backend and frontend [dockerized](https://www.docker.com), and [docker-compose](https://docs.docker.com/compose/) to quickly mount the environment.
-- Continuous deployment with [GitHub Actions](https://github.com/features/actions).
+- Continuous integration and deployment with [GitHub Actions](https://github.com/features/actions).
 
 ## Getting started
 
@@ -67,11 +67,14 @@ docker-compose up
 ```
 Note: if you want to run the containers in the background, use the `-d` flag (e.g. `docker-compose up -d`).
 
-## Continuous deployment with GitHub Actions
+## Continuous integration and deployment with GitHub Actions
 
-The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend. To automate this process, the project is configured to use GitHub Actions.
+The project is configured to use GitHub Actions as a CI/CD service. The files located in `.github/workflows` instructs GitHub to execute two actions:
 
-Every time the source code changes, an automatic deploy is made to GitHub Pages and/or Heroku (depending on where the changes were made). The files located in `.github/workflows` instructs GitHub to deploy the applications on every push to `master`, either by directly pushing to the branch or by merging a pull request.
+- Run unit tests on every push, so that way we ensure that all the pushed code is stable and bug-free (or as bug-free as possible). The repository is also configured to prevent merging a pull request if the tests hasn't passed.
+- Auto-deploy on every push to `master`, either by directly pushing to the branch or by merging a pull request.
+
+The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend.
 
 ## External resources
 
@@ -83,9 +86,9 @@ This app uses two external resources to work properly:
 ## TODO
 
 - Create unit tests.
+- Run unit tests using `Github Actions`.
 - Create a health endpoint.
 - Add `Husky`.
-- Run unit tests using `Github Actions`.
 - <strike>Create a welcome dialog.</strike>
 - Move API Key to `.env.local` file and delete it from `docker-compose`.
 - <strike>Add deployment of backend in `Github Actions`.</strike>
