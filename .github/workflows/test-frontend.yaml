@@ -7,9 +7,12 @@ on:
       - '.github/workflows/ci-frontend.yaml'
 
 jobs:
-  test:
+  test-frontend:
     name: Test frontend
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
