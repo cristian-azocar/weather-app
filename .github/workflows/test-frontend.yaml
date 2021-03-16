@@ -1,4 +1,4 @@
-name: Build and test frontend
+name: Test frontend
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - '.github/workflows/ci-frontend.yaml'
 
 jobs:
-  build-and-test:
-    name: Build and test
+  test:
+    name: Test frontend
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
