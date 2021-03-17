@@ -6,10 +6,6 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/react-hooks": "^5.1.0",
-    "@testing-library/user-event": "^12.8.3",
     "a11y-react-emoji": "^1.1.2",
     "axios": "^0.21.1",
     "leaflet": "^1.7.1",
@@ -45,6 +41,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^5.1.0",
+    "@testing-library/user-event": "^12.8.3",
     "@types/leaflet": "^1.7.0",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.34",
@@ -62,6 +62,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.21.5",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "ts-jest": "^26.5.4"
   }
 }

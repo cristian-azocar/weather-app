@@ -1,1 +1,1 @@
-export { default } from './WeatherService';
+export { default, WeatherService } from './WeatherService';
