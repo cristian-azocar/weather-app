@@ -1,4 +1,4 @@
-import { camelCase } from '../string-utils';
+import camelCase from 'lodash/camelCase';
 
 type AnyObject = Record<string, unknown>;
 
@@ -28,5 +28,11 @@ export function areEqual(object: AnyObject, other: AnyObject): boolean {
     return false;
   }
 
-  return objectKeys.every((key: string) => object[key] === other[key]);
+  return objectKeys.every((key: string) => {
+    if (typeof object[key] === 'object') {
+      return areEqual(object[key] as AnyObject, other[key] as AnyObject);
+    }
+
+    return object[key] === other[key];
+  });
 }
