@@ -10,7 +10,8 @@
     "postinstall": "tsc",
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "engines": {
     "node": "14.16.0"
