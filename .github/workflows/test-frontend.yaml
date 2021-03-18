@@ -1,4 +1,4 @@
-name: Build and test frontend
+name: Test frontend
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - '.github/workflows/test-frontend.yaml'
 
 jobs:
-  build-and-test:
-    name: Build and test frontend
+  test:
+    name: Test frontend
     runs-on: ubuntu-latest
     defaults:
       run:
