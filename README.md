@@ -89,13 +89,13 @@ This app uses two external resources to work properly:
 
 ## TODO
 
-- Create unit tests.
-- Run unit tests using `Github Actions`.
-- Create a health endpoint.
-- Add `Husky`.
-- <strike>Create a welcome dialog.</strike>
-- Move API Key to `.env.local` file and delete it from `docker-compose`.
-- <strike>Add deployment of backend in `Github Actions`.</strike>
-- Display text in english and spanish.
-- Add `app-module-path`.
-- Document the API using the `OpenAPI` specification and `Swagger`.
+- ⬜️ Create unit tests.
+- ✅ Run unit tests using `Github Actions`.
+- ⬜️ Create a health endpoint.
+- ⬜️ Add `Husky`.
+- ✅ Create a welcome dialog.
+- ⬜️ Move API Key to `.env.local` file and delete it from `docker-compose`.
+- ✅ Add deployment of backend in `Github Actions`.
+- ⬜️ Display text in english and spanish.
+- ⬜️ Add `app-module-path`.
+- ⬜️ Document the API using the `OpenAPI` specification and `Swagger`.
