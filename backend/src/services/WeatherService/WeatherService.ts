@@ -7,7 +7,7 @@ const exclude = 'minutely,hourly,daily,flags';
 const { url, key: apiKey } = config.weatherApi;
 
 export default class WeatherService {
-  transformResponse(response: string): unknown {
+  private transformResponse(response: string): unknown {
     const obj: Record<string, unknown> = JSON.parse(response);
     return camelizeKeys(obj);
   }
