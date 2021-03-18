@@ -33,6 +33,8 @@ The website is basically an interactive map that shows the current weather of a 
 - Good and clean code practices using [ESLint](https://eslint.org/) (based on [Airbnb configuration](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)), [Prettier](https://prettier.io/) and [EditorConfig](https://editorconfig.org/).
 - Both backend and frontend [dockerized](https://www.docker.com), and [docker-compose](https://docs.docker.com/compose/) to quickly mount the environment.
 - Continuous integration and deployment with [GitHub Actions](https://github.com/features/actions).
+  - Run unit tests on every push.
+  - Auto-deploy when pushing to `master`.
 
 ## Getting started
 
