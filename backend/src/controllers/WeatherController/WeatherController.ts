@@ -6,6 +6,10 @@ import redisStorage from '../../storage/RedisStorage';
 export default class WeatherController {
   private weatherService: WeatherService = new WeatherService();
 
+  constructor() {
+    this.getWeather = this.getWeather.bind(this);
+  }
+
   async getWeather(req: Request, res: Response): Promise<void> {
     const { latitude, longitude } = req.query;
     const [lat, lng] = [+latitude, +longitude];
