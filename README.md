@@ -36,6 +36,13 @@ The website is basically an interactive map that shows the current weather of a 
   - Run unit tests on every push using [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/).
   - Auto-deploy when pushing to `master`.
 
+## External resources
+
+This app uses two external resources to work properly:
+
+- [Leaflet](https://leafletjs.com): an open-source library to display interactive maps.
+- [OpenWeather](https://openweathermap.org/): provides APIs to get weather forecasts.
+
 ## Backend endpoints
 
 The backend includes the following endpoints:
@@ -74,6 +81,11 @@ npm install --prefix backend
 npm install --prefix frontend
 ```
 
+Configure the OpenWeather API key by creating a file called `.env` at the root of the `backend` folder with the following content:
+```
+WEATHER_API_KEY=(your api key goes here)
+```
+
 Run the application using Docker Compose:
 ```
 docker-compose up
@@ -89,13 +101,6 @@ The project is configured to use GitHub Actions as a CI/CD service. The files lo
 
 The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend.
 
-## External resources
-
-This app uses two external resources to work properly:
-
-- [Leaflet](https://leafletjs.com): an open-source library to display interactive maps.
-- [OpenWeather](https://openweathermap.org/): provides APIs to get weather forecasts.
-
 ## TODO
 
 - ⬜️ Create backend unit tests (WIP).
@@ -103,7 +108,7 @@ This app uses two external resources to work properly:
 - ✅ Create a health endpoint.
 - ⬜️ Add `Husky`.
 - ✅ Create a welcome dialog.
-- ⬜️ Move API Key to `.env.local` file and delete it from `docker-compose`.
+- ✅ Move API key to `.env` file and delete it from `docker-compose`.
 - ✅ Add deployment of backend in `Github Actions`.
 - ⬜️ Display text in english and spanish.
 - ⬜️ Add `app-module-path`.

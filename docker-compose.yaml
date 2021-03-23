@@ -16,7 +16,6 @@ services:
       - ./backend/:/usr/src/app
     environment:
       REDIS_HOST: redis
-      WEATHER_API_KEY: 1a4560cc9acebeb0ad8b72fe64d6cac8
 
   frontend:
     depends_on:
