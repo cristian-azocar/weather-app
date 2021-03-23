@@ -1,6 +1,5 @@
 import express from 'express';
 import 'express-async-errors';
-import bodyParser from 'body-parser';
 import cors, { CorsOptions } from 'cors';
 import routes from './routes';
 import ErrorHandlerMiddleware from './middlewares/ErrorHandlerMiddleware';
@@ -20,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
   app.options('*', cors(corsOptions));
 }
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use('/api', routes);
 app.use(errorHandler.handleErrors);
 

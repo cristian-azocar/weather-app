@@ -44,3 +44,16 @@ export interface IWeather {
     }>;
   };
 }
+
+export interface IHealthInfo {
+  nodeVersion: string;
+  service: string;
+  memory: NodeJS.MemoryUsage;
+  pid: number;
+  uptime: number;
+  environment: string;
+  package: {
+    name: string;
+    version: string;
+  };
+}

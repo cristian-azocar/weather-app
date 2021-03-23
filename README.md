@@ -36,6 +36,15 @@ The website is basically an interactive map that shows the current weather of a 
   - Run unit tests on every push using [Jest](https://jestjs.io/) and [Testing Library](https://testing-library.com/).
   - Auto-deploy when pushing to `master`.
 
+## Backend endpoints
+
+The backend includes the following endpoints:
+
+| Endpoint | Method | Description                                |
+| -------- | ------ | ------------------------------------------ |
+| /weather | GET    | Gets the weather given a coordinate        |
+| /health  | GET    | Gets the health information of the backend |
+
 ## Getting started
 
 ### Prerequisites
@@ -91,7 +100,7 @@ This app uses two external resources to work properly:
 
 - ⬜️ Create backend unit tests (WIP).
 - ✅ Run unit tests using `Github Actions`.
-- ⬜️ Create a health endpoint.
+- ✅ Create a health endpoint.
 - ⬜️ Add `Husky`.
 - ✅ Create a welcome dialog.
 - ⬜️ Move API Key to `.env.local` file and delete it from `docker-compose`.
