@@ -89,7 +89,7 @@ This app uses two external resources to work properly:
 
 ## TODO
 
-- ⬜️ Create unit tests.
+- ⬜️ Create backend unit tests (WIP).
 - ✅ Run unit tests using `Github Actions`.
 - ⬜️ Create a health endpoint.
 - ⬜️ Add `Husky`.
