@@ -5,7 +5,6 @@
 </p>
 
 <p align="center">
-  <img src="https://badgen.net/dependabot/cristian-azocar/weather-app?icon=dependabot" />
   <img src="https://github.com/cristian-azocar/weather-app/actions/workflows/test-frontend.yaml/badge.svg">
   <img src="https://github.com/cristian-azocar/weather-app/actions/workflows/test-backend.yaml/badge.svg">
 </p>
@@ -100,16 +99,3 @@ The project is configured to use GitHub Actions as a CI/CD service. The files lo
 - Auto-deploy on every push to `master`, either by directly pushing to the branch or by merging a pull request.
 
 The application is deployed in two platforms: [GitHub Pages](https://pages.github.com) for the frontend, and [Heroku](https://www.heroku.com) for the backend.
-
-## TODO
-
-- ⬜️ Create backend unit tests (WIP).
-- ✅ Run unit tests using `Github Actions`.
-- ✅ Create a health endpoint.
-- ⬜️ Add `Husky`.
-- ✅ Create a welcome dialog.
-- ✅ Move API key to `.env` file and delete it from `docker-compose`.
-- ✅ Add deployment of backend in `Github Actions`.
-- ⬜️ Display text in english and spanish.
-- ⬜️ Add `app-module-path`.
-- ⬜️ Document the API using the `OpenAPI` specification and `Swagger`.
