@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { IWeather } from '../../types/interfaces';
+import { Weather } from '../../hooks/useWeather';
 import WeatherDialog from './WeatherDialog';
 
-const weatherMock: IWeather = {
+const weatherMock: Weather = {
   lat: -37,
   lon: -33,
   timezone: 'Etc/GMT+2',
@@ -47,14 +47,13 @@ test('does not renders a dialog', (): void => {
 });
 
 test('renders a loading indicator', (): void => {
-  render(<WeatherDialog open loading />);
+  render(<WeatherDialog open isLoading />);
   const loadingElement: HTMLElement = screen.getByRole('progressbar');
   expect(loadingElement).toBeInTheDocument();
 });
 
 test('renders an error message', (): void => {
-  const error: Error = new Error('Some error message');
-  render(<WeatherDialog open loading={false} error={error} />);
+  render(<WeatherDialog open isError />);
   const errorElement: HTMLElement = screen.getByRole('alert');
   expect(errorElement).toBeInTheDocument();
 });
@@ -93,8 +92,7 @@ test('calls onClose prop when clicking the close button', (): void => {
 
 test('calls onRetry prop when clicking on the retry button', (): void => {
   const handleRetry: jest.Mock = jest.fn();
-  const error: Error = new Error('Some error message');
-  render(<WeatherDialog open error={error} onRetry={handleRetry} />);
+  render(<WeatherDialog open isError onRetry={handleRetry} />);
   const retryButton: HTMLElement = screen.getByRole('button', {
     name: /Retry/i,
   });

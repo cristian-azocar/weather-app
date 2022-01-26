@@ -3,33 +3,33 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import ErrorOutline from '@material-ui/icons/ErrorOutline';
-import { Button } from '@material-ui/core';
-import { IWeather } from '../../types/interfaces';
+import { Weather } from '../../hooks/useWeather';
 import useStyles from './styles';
 
 type WeatherDialogProps = {
   open: boolean;
-  loading?: boolean;
-  weather?: IWeather;
-  error?: Error;
+  weather?: Weather;
+  isLoading?: boolean;
+  isError?: boolean;
   onClose?: () => void;
   onRetry?: () => void;
 };
 
 function WeatherDialog(props: WeatherDialogProps): JSX.Element {
-  const { open, loading, weather, error, onClose, onRetry } = props;
+  const { open, isLoading, weather, isError, onClose, onRetry } = props;
   const classes = useStyles();
 
   function renderContent(): JSX.Element {
-    if (loading) {
+    if (isLoading) {
       return <CircularProgress size={80} role="progressbar" aria-busy="true" />;
     }
 
-    if (error) {
+    if (isError) {
       return (
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Grid item>
@@ -63,6 +63,8 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
           <img
             alt="icon"
             src={`https://openweathermap.org/img/wn/${weather?.current.weather[0].icon}@2x.png`}
+            width={100}
+            height={100}
           />
         </Grid>
         <Grid item>
@@ -100,9 +102,9 @@ function WeatherDialog(props: WeatherDialogProps): JSX.Element {
 }
 
 WeatherDialog.defaultProps = {
-  loading: false,
   weather: undefined,
-  error: undefined,
+  isLoading: false,
+  isError: undefined,
   onClose: undefined,
   onRetry: undefined,
 };

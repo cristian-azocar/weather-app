@@ -7,7 +7,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-import welcomeImage from '../../assets/images/welcome-image.png';
 import useStyles from './styles';
 
 type WelcomeDialogProps = {
@@ -25,7 +24,10 @@ function WelcomeDialog(props: WelcomeDialogProps): JSX.Element {
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.gridItem}>
             <Box textAlign="center">
-              <img src={welcomeImage} alt="welcome" />
+              <img
+                src="/weather-app/static/images/welcome-image.png"
+                alt="welcome"
+              />
             </Box>
           </Grid>
           <Grid item className={classes.gridItem}>

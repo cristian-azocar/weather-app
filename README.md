@@ -24,7 +24,7 @@ The website is basically an interactive map that shows the current weather of a 
 - Frontend built with [React](https://reactjs.org).
   - Bootstraped using [Create React App](https://github.com/facebook/create-react-app).
   - [Material-UI](https://material-ui.com/) and [CSS-in-JS](https://cssinjs.org/) to style the components.
-  - Global state management using [React Context](https://reactjs.org/docs/context.html).
+  - Fetch data using [React Query](https://react-query.tanstack.com).
 - Backend built with [Node.js](https://nodejs.org) and [Express](https://github.com/expressjs/express).
   - Hot-reload with [Nodemon](https://nodemon.io).
   - Cache layer using [Redis](https://redis.io/).
@@ -46,10 +46,10 @@ This app uses two external resources to work properly:
 
 The backend includes the following endpoints:
 
-| Endpoint | Method | Description                                |
-| -------- | ------ | ------------------------------------------ |
-| /weather | GET    | Gets the weather given a coordinate        |
-| /health  | GET    | Gets the health information of the backend |
+| Endpoint     | Method | Description                                |
+| ------------ | ------ | ------------------------------------------ |
+| /api/weather | GET    | Gets the weather given a coordinate        |
+| /api/health  | GET    | Gets the health information of the backend |
 
 ## Getting started
 

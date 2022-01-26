@@ -45,8 +45,8 @@
       "error",
       {
         "devDependencies": [
-          "**/*.test.js",
-          "**/*.spec.js",
+          "**/*.test.tsx",
+          "**/*.spec.ts",
           "src/utils/testUtils/testUtils.js",
           "src/setupTests.js"
         ]
