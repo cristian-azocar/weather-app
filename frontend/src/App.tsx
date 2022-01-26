@@ -1,83 +1,49 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Map, { Coordinates } from './components/Map';
 import WeatherDialog from './components/WeatherDialog';
 import WelcomeDialog from './components/WelcomeDialog';
-import { useWeather } from './contexts/WeatherContext';
-import useMergeState from './hooks/useMergeState';
-import { IWeather } from './types/interfaces';
-import * as localStorageUtils from './utils/localStorage-utils';
-
-type WeatherDialogState = {
-  open: boolean;
-  loading?: boolean;
-  weather?: IWeather;
-  error?: Error;
-};
-
-const initialWeatherDialogState: WeatherDialogState = {
-  open: false,
-  loading: false,
-  weather: undefined,
-  error: undefined,
-};
-
-const initialWelcomeDialogState = {
-  open: !localStorageUtils.getItem('welcomeDialogSeen'),
-};
+import useWeather from './hooks/useWeather';
+import useLocalStorage from './hooks/useLocalStorage';
 
 export default function App(): JSX.Element {
-  const [weatherDialog, setWeatherDialog] = useMergeState(
-    initialWeatherDialogState
+  const [openWeatherDialog, setOpenWeatherDialog] = useState(false);
+  const [selectedCoordinates, setSelectedCoordinates] = useState<Coordinates>();
+  const [showWelcomeDialog, setShowWelcomeDialog] = useLocalStorage(
+    'showWelcomeDialog',
+    true
   );
-  const [welcomeDialog, setWelcomeDialog] = useState(initialWelcomeDialogState);
-  const lastCoordinatesRef = useRef<Coordinates>();
-  const { fetchWeather } = useWeather();
+  const { data, isLoading, isError, refetch } = useWeather(selectedCoordinates);
 
   function handleMapClick(coordinates: Coordinates): void {
-    lastCoordinatesRef.current = coordinates;
-    fetchAndDisplayWeather(coordinates);
+    setSelectedCoordinates(coordinates);
+    setOpenWeatherDialog(true);
   }
 
   function retryWeatherFetch(): void {
-    if (!lastCoordinatesRef.current) {
+    if (!selectedCoordinates) {
       throw new Error('No coordinates have been selected yet');
     }
 
-    fetchAndDisplayWeather(lastCoordinatesRef.current);
+    refetch();
   }
 
   function closeWeatherDialog(): void {
-    setWeatherDialog({ open: false });
+    setOpenWeatherDialog(false);
   }
 
   function closeWelcomeDialog(): void {
-    localStorageUtils.setItem('welcomeDialogSeen', true);
-    setWelcomeDialog({ open: false });
-  }
-
-  async function fetchAndDisplayWeather(
-    coordinates: Coordinates
-  ): Promise<void> {
-    setWeatherDialog({ open: true, loading: true });
-
-    try {
-      const { latitude, longitude } = coordinates;
-      const weather: IWeather = await fetchWeather(latitude, longitude);
-      setWeatherDialog({ loading: false, weather });
-    } catch (error) {
-      setWeatherDialog({ loading: false, error });
-    }
+    setShowWelcomeDialog(false);
   }
 
   return (
     <div id="app" data-testid="app">
-      <WelcomeDialog open={welcomeDialog.open} onClose={closeWelcomeDialog} />
+      <WelcomeDialog open={showWelcomeDialog} onClose={closeWelcomeDialog} />
       <Map onClick={handleMapClick} />
       <WeatherDialog
-        open={weatherDialog.open}
-        loading={weatherDialog.loading}
-        weather={weatherDialog.weather}
-        error={weatherDialog.error}
+        open={openWeatherDialog}
+        weather={data}
+        isLoading={isLoading}
+        isError={isError}
         onClose={closeWeatherDialog}
         onRetry={retryWeatherFetch}
       />
